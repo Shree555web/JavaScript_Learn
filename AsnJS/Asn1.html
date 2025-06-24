@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Basic Programming Tasks</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    h2 { color: #2c3e50; }
+    input, button { margin: 5px 0; padding: 5px; }
+    .section { margin-bottom: 30px; border-bottom: 1px solid #ccc; padding-bottom: 20px; }
+  </style>
+</head>
+<body>
+
+  <h1>Basic Programming Tasks</h1>
+
+  <!-- Arithmetic Operations -->
+  <div class="section">
+    <h2>Arithmetic Operations</h2>
+    <input type="number" id="num1" placeholder="Enter first number">
+    <input type="number" id="num2" placeholder="Enter second number"><br>
+    <button onclick="arithmetic()">Calculate</button>
+    <p id="arithmeticResult"></p>
+  </div>
+
+  <!-- Area Calculations -->
+  <div class="section">
+    <h2>Area Calculations</h2>
+    <p>Circle, Rectangle, Triangle, Square, Rhombus</p>
+    <button onclick="areaCalculations()">Run Examples</button>
+    <p id="areaResult"></p>
+  </div>
+
+  <!-- Simple Interest -->
+  <div class="section">
+    <h2>Simple Interest</h2>
+    <input type="number" id="principal" placeholder="Principal">
+    <input type="number" id="rate" placeholder="Rate (%)">
+    <input type="number" id="time" placeholder="Time (years)">
+    <button onclick="simpleInterest()">Calculate</button>
+    <p id="siResult"></p>
+  </div>
+
+  <!-- Average of 3 Numbers -->
+  <div class="section">
+    <h2>Average of 3 Numbers</h2>
+    <input type="number" id="a1" placeholder="Number 1">
+    <input type="number" id="a2" placeholder="Number 2">
+    <input type="number" id="a3" placeholder="Number 3">
+    <button onclick="average3()">Calculate</button>
+    <p id="avg3Result"></p>
+  </div>
+
+  <!-- Exchange Two Numbers -->
+  <div class="section">
+    <h2>Exchange Two Numbers</h2>
+    <input type="number" id="ex1" placeholder="Number A">
+    <input type="number" id="ex2" placeholder="Number B">
+    <button onclick="exchange()">Swap</button>
+    <p id="exchangeResult"></p>
+  </div>
+
+  <!-- Sum of Digits in a 3 Digit Number -->
+  <div class="section">
+    <h2>Sum of Digits in 3 Digit Number</h2>
+    <input type="number" id="sum3" placeholder="Enter 3-digit number">
+    <button onclick="sumOfDigits3()">Calculate</button>
+    <p id="sum3Result"></p>
+  </div>
+
+  <!-- Average of Digits in 5 Digit Number -->
+  <div class="section">
+    <h2>Average of Digits in 5 Digit Number</h2>
+    <input type="number" id="avg5" placeholder="Enter 5-digit number">
+    <button onclick="avgOfDigits5()">Calculate</button>
+    <p id="avg5Result"></p>
+  </div>
+
+  <!-- Reverse a 4 Digit Number -->
+  <div class="section">
+    <h2>Reverse of 4 Digit Number</h2>
+    <input type="number" id="rev4" placeholder="Enter 4-digit number">
+    <button onclick="reverse4()">Reverse</button>
+    <p id="rev4Result"></p>
+  </div>
+
+  <script>
+    function arithmetic() {
+      let n1 = parseFloat(document.getElementById("num1").value);
+      let n2 = parseFloat(document.getElementById("num2").value);
+      let result = `
+        Sum: ${n1 + n2}<br>
+        Sub: ${n1 - n2}<br>
+        Mul: ${n1 * n2}<br>
+        Div: ${n2 !== 0 ? (n1 / n2).toFixed(2) : 'Infinity'}<br>
+        Mod: ${n1 % n2}<br>
+        Square: ${n1 ** 2}, ${n2 ** 2}<br>
+        Cube: ${n1 ** 3}, ${n2 ** 3}
+      `;
+      document.getElementById("arithmeticResult").innerHTML = result;
+    }
+
+    function areaCalculations() {
+      const pi = 3.1416, radius = 5, length = 4, width = 3, base = 6, height = 4, side = 5, diagonal1 = 6, diagonal2 = 8;
+      const result = `
+        Circle: ${pi * radius ** 2}<br>
+        Rectangle: ${length * width}<br>
+        Triangle: ${0.5 * base * height}<br>
+        Square: ${side ** 2}<br>
+        Rhombus: ${(diagonal1 * diagonal2) / 2}
+      `;
+      document.getElementById("areaResult").innerHTML = result;
+    }
+
+    function simpleInterest() {
+      let p = parseFloat(document.getElementById("principal").value);
+      let r = parseFloat(document.getElementById("rate").value);
+      let t = parseFloat(document.getElementById("time").value);
+      let si = (p * r * t) / 100;
+      document.getElementById("siResult").innerText = `Simple Interest: ${si}`;
+    }
+
+    function average3() {
+      let a = parseFloat(document.getElementById("a1").value);
+      let b = parseFloat(document.getElementById("a2").value);
+      let c = parseFloat(document.getElementById("a3").value);
+      document.getElementById("avg3Result").innerText = `Average: ${(a + b + c) / 3}`;
+    }
+
+    function exchange() {
+      let a = parseFloat(document.getElementById("ex1").value);
+      let b = parseFloat(document.getElementById("ex2").value);
+      [a, b] = [b, a];
+      document.getElementById("exchangeResult").innerText = `After swap: A = ${a}, B = ${b}`;
+    }
+
+    function sumOfDigits3() {
+      let num = parseInt(document.getElementById("sum3").value);
+      let sum = 0, original = num;
+      while (num > 0) {
+        sum += num % 10;
+        num = Math.floor(num / 10);
+      }
+      document.getElementById("sum3Result").innerText = `Sum of digits of ${original} = ${sum}`;
+    }
+
+    function avgOfDigits5() {
+      let num = parseInt(document.getElementById("avg5").value);
+      let sum = 0, count = 0, original = num;
+      while (num > 0) {
+        sum += num % 10;
+        num = Math.floor(num / 10);
+        count++;
+      }
+      document.getElementById("avg5Result").innerText = `Average of digits in ${original} = ${sum / count}`;
+    }
+
+    function reverse4() {
+      let num = parseInt(document.getElementById("rev4").value);
+      let reversed = 0, original = num;
+      while (num > 0) {
+        reversed = reversed * 10 + (num % 10);
+        num = Math.floor(num / 10);
+      }
+      document.getElementById("rev4Result").innerText = `Reverse of ${original} = ${reversed}`;
+    }
+  </script>
+
+  <br><br>
+  <a href="odd even.html"> odd even.html</a>
+
+</body>
+</html>

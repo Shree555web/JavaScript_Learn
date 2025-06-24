@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>no = 1dgt 2dgt 3dgt 4dgt</title>
+    <script>
+        var a = parseInt(prompt("Enter a number"));
+
+        if (a <= 0) {
+            document.write("Entered zero or a negative number");
+        } else {
+            if (a <= 9) {
+                document.write("1-digit number");
+            } else {
+                if (a <= 99) {
+                    document.write("2-digit number");
+                } else {
+                    if (a <= 999) {
+                        document.write("3-digit number");
+                    } else {
+                        if (a <= 9999) {
+                            document.write("4-digit number");
+                        } else {
+                            document.write("Number has more than 4 digits");
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <br><br>
+    <a href="../If_Else Ladder/%25 grade.html">Next: % Grade</a>
+</body>
+</html>
